@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/index_style.css">
+    </head>
+
+    <body>
+
+        <div id='listaPrenotazioni'>
+            
+        </div>
+
+        <script>
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                var res = xhttp.responseText;
+                var j = JSON.parse(res);
+                var html = "";
+                for( i=0; i < j.Result.length; i++)
+                {
+                    html = html + "<div class='contenitorePosto'>";
+                    html = html + "<div class='contenitoreScrittaBtn'>";
+                    html = html + "<h2 class='scrittaNPosto'>Posto n: " + j.Result[i].idDato + "</h2>";
+                    if(j.Result[i].prenotato == false)
+                        html = html + "<button onclick='prenotaPost()' class='btnPrenota'>Prenota</button>";
+                    else
+                        html = html + "<button onclick='prenotaPost()' class='btnPrenotato'>Prenotato</button>";
+                    //alert(j.Result[i].idDato + "-" + j.Result[i].dato);
+                }
+            }
+            xhttp.open("POST", "vis_tabella.php", true);
+            xhttp.send();
+
+            function prenotaPost()
+            {
+
+            }
+        </script>
+    </body>
+</html>
