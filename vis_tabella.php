@@ -1,5 +1,5 @@
 <?php
-	$con = mysqli_connect("localhost","quintaf","Qu!nta","pren_ulivi");
+	require_once("var_conn.php");
 	$sql = "SELECT * FROM tprenotazione";
 	$res = mysqli_query($con,$sql);
 	$i = 0;
