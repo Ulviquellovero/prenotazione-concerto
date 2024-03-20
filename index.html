@@ -4,12 +4,16 @@
     </head>
 
     <body>
-
+        <h1 id="nomeBand">The Beatles</h1>
+        <h2 id="infoConc">Concerto in data 13/06/2024</h2>
+        <div id="caricamento"></div>
         <div id='listaPrenotazioni'>
             
         </div>
 
         <script>
+            var indicatoreCaricamento = document.getElementById("caricamento");
+            indicatoreCaricamento.style.display = "block";
             var intervallo = setInterval(creaTabella, 1000);
             function creaTabella()
             {
@@ -34,6 +38,7 @@
                     html = html.replace(/'/g, '"');
                     if(divLista.innerHTML != html)
                         divLista.innerHTML = html;
+                    indicatoreCaricamento.style.display = "none";
                 }
                 xhttp.open("POST", "vis_tabella.php", true);
                 xhttp.send();
