@@ -48,6 +48,8 @@
             {
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function() {
+                    /*var res = xhttp.responseText;
+                    var j = JSON.parse(res);*/
                     var btnCliccato = document.getElementById(idPosto);
                     btnCliccato.classList.remove("btnPrenota");
                     btnCliccato.classList.add("btnPrenotato");
