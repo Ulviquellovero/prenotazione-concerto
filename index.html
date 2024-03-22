@@ -48,11 +48,16 @@
             {
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function() {
-                    /*var res = xhttp.responseText;
-                    var j = JSON.parse(res);*/
-                    var btnCliccato = document.getElementById(idPosto);
-                    btnCliccato.classList.remove("btnPrenota");
-                    btnCliccato.classList.add("btnPrenotato");
+                    var res = xhttp.responseText;
+                    var j = JSON.parse(res);
+                    if (j.prenotato) {
+                        var btnCliccato = document.getElementById(idPosto);
+                        btnCliccato.classList.remove("btnPrenota");
+                        btnCliccato.classList.add("btnPrenotato");
+                        btnCliccato.textContent = "Prenotato";
+                    } else {
+                        alert("Non puoi prenotare piu' di un biglietto! I posti sono limitati!");
+                    }
                 }
                 xhttp.open("POST", "prenota.php?idPosto="+idPosto, true);
                 xhttp.send();
