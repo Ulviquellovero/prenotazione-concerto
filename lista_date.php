@@ -1,10 +1,16 @@
+<?php
+    session_start();
+    if(isset($_GET["idBand"]))
+        $_SESSION["idBand"] = $_GET["idBand"];
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="css/index_style.css">
     </head>
 
     <body>
-        <h1 id="titoloPagina">Lista Band</h1>
+        <h1 id="titoloPagina">Date </h1>
         <div id="caricamento"></div>
         <div id='listaBand'>
             

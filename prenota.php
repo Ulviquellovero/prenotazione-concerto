@@ -1,5 +1,7 @@
 <?php
 	require_once("var_conn.php");
+    header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: *");
     $idSessione = session_id();
     $sql = "SELECT * FROM tprenotazione WHERE idSessioneUtente = '$idSessione'";
     $res = mysqli_query($con, $sql);

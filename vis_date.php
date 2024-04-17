@@ -1,17 +1,14 @@
 <?php
 	require_once("var_conn.php");
 	header("Access-Control-Allow-Origin: *");
-	header("Access-Control-Allow-Headers: *");
-    if(isset($_GET["idBand"]))
-    {
-        $idBand = $_GET["idBand"];
-        $sql = "SELECT * FROM tDate WHERE idBand = $idBand";
+	header("Access-Control-Allow-Headers: *");  
+        $sql = "SELECT * FROM tData WHERE band = $idBand";
         $res = mysqli_query($con,$sql);
         $i = 0;
         while($array = mysqli_fetch_array($res)) {
             $row = array(
                         "id" => $array['id'],
-                        "nome" => $array['nome'],
+                        "data" => $array['data'],
                         );
             $resArr[$i] = $row;
             $i++;
@@ -20,5 +17,4 @@
                     "Result" => $resArr,
                     );
         echo json_encode($risFin);
-    }
 ?>
