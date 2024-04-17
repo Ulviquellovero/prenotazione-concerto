@@ -1,12 +1,14 @@
 <?php
 	require_once("var_conn.php");
-	$sql = "SELECT * FROM tprenotazione";
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: *");
+	$sql = "SELECT * FROM tBand";
 	$res = mysqli_query($con,$sql);
 	$i = 0;
 	while($array = mysqli_fetch_array($res)) {
 		$row = array(
-					"idDato" => $array['id'],
-					"prenotato" => $array['prenotato'],
+					"id" => $array['id'],
+					"nome" => $array['nome'],
 					);
 		$resArr[$i] = $row;
 		$i++;
