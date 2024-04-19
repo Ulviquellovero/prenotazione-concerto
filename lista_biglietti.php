@@ -1,11 +1,15 @@
+<?php
+    session_start();
+    if(isset($_GET["idData"]))
+        $_SESSION["idData"] = $_GET["idData"];
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="css/lista_biglietti_style.css">
     </head>
 
     <body>
-        <h1 id="nomeBand">The Beatles</h1>
-        <h2 id="infoConc">Concerto in data 13/06/2024</h2>
         <div id="caricamento"></div>
         <div id='listaPrenotazioni'>
             
@@ -23,11 +27,18 @@
                     var res = xhttp.responseText;
                     var j = JSON.parse(res);
                     var html = "";
+                    html = html + "<h1 id='nomeBand'>"+ j.Result[0].band + "</h1>";
+                    var partiData = j.Result[0].data.split("-");
+                    var anno = partiData[0];
+                    var mese = partiData[1];
+                    var giorno = partiData[2];
+                    var dataOutput = giorno + "/" + mese + "/" + anno;
+                    html = html + "<h2 id='infoConc'>Concerto in data " + dataOutput + " a " + j.Result[0].luogo + "</h2>";
                     for( i=0; i < j.Result.length; i++)
                     {
                         html = html + "<div class='contenitorePosto'>";
                         html = html + "<div class='contenitoreScrittaBtn'>";
-                        html = html + "<h2 class='scrittaNPosto'>Posto n: " + j.Result[i].idDato + "</h2>";
+                        html = html + "<h2 class='scrittaNPosto'>Posto n: " + j.Result[i].nPosto + "</h2>";
                         if(j.Result[i].prenotato == 0)
                             html = html + "<button onclick='prenotaPost(this.id)' class='btnPrenota' id='"+j.Result[i].idDato+"'>Prenota</button>";
                         else
@@ -41,7 +52,8 @@
                         divLista.innerHTML = html;
                     indicatoreCaricamento.style.display = "none";
                 }
-                xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_biglietti.php", true);
+                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_biglietti.php", true);
+                xhttp.open("POST", "vis_biglietti.php", true);
                 xhttp.send();
             }
 
@@ -60,7 +72,8 @@
                         alert("Non puoi prenotare piu' di un biglietto! I posti sono limitati!");
                     }
                 }
-                xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/prenota.php?idPosto="+idPosto, true);
+                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/prenota.php?idPosto="+idPosto, true);
+                xhttp.open("POST", "prenota.php?idPosto="+idPosto, true);
                 xhttp.send();
             }
         </script>
