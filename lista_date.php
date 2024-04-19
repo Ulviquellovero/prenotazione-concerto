@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="css/index_style.css">
+        <link rel="stylesheet" href="css/lista_date_style.css">
     </head>
 
     <body>
@@ -20,7 +20,7 @@
 
             var indicatoreCaricamento = document.getElementById("caricamento");
             indicatoreCaricamento.style.display = "block";
-            var intervallo = setInterval(creaTabella, 1000);
+            creaTabella();
             function creaTabella()
             {
                 const xhttp = new XMLHttpRequest();
@@ -28,11 +28,17 @@
                     var res = xhttp.responseText;
                     var j = JSON.parse(res);
                     var html = "";
+                    html = html +  "<h2 id='nomeBand'>Date Disponibili per: " + j.Result[0].band + "</h2>";
                     for( i=0; i < j.Result.length; i++)
                     {
-                        html = html + "<div onClick='bandScelta(" + j.Result[i].id + ")'class='contenitoreBand'>";
+                        html = html + "<div onClick='dataScelta(" + j.Result[i].id + ")'class='contenitoreData'>";
                         html = html + "<div class='contenitoreScritta'>";
-                        html = html + "<h2 class='scrittaBand'>" + j.Result[i].nome + "</h2>";
+                        var partiData = j.Result[i].data.split("-");
+                        var anno = partiData[0];
+                        var mese = partiData[1];
+                        var giorno = partiData[2];
+                        var dataOutput = giorno + "/" + mese + "/" + anno;
+                        html = html + "<h2 class='scrittaData'>" + dataOutput + " - " + j.Result[i].luogo + "</h2>";
                         html = html + "</div>";
                         html = html + "</div>";
                     }
@@ -42,13 +48,14 @@
                         divLista.innerHTML = html;
                     indicatoreCaricamento.style.display = "none";
                 }
-                xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
+                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
+                xhttp.open("POST", "vis_date.php", true);
                 xhttp.send();
             }
 
-            function bandScelta(id)
+            function dataScelta(id)
             {
-                window.location = "lista_date.php?idBand="+id;
+                window.location = "lista_biglietti.php?idData="+id;
             }
 
         </script>
