@@ -55,7 +55,6 @@ body
 #nomeBand
 {
     color: #80808073;
-    width: 100%;
     margin: 2vw;
 }
 
@@ -106,4 +105,14 @@ body
 
 #btnLogin:hover {
     background-color: #0056b3;
+}
+
+#username
+{
+    position: absolute;
+    right: 0;
+    margin-top: 2vw;
+    margin-right: 2vw;
+    color: #808080;
+    font-size: 2vw;
 }

@@ -4,8 +4,34 @@
     </head>
 
     <body>
+        <div id="headerPagina"></div>
+
+        <script>
+            verificaLogin();
+            
+            function verificaLogin()
+            {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    var res = xhttp.responseText;
+                    var j = JSON.parse(res);
+                    var html = "";
+                    if(!j.autenticato)
+                        html = html + "<button id='btnLogin' onclick='btnLogin()''>Login</button>";
+                    else
+                        html = html + "<span id='username'>Benvenuto " + j.userName + "</span>";
+                    var headerPagina = document.getElementById("headerPagina");
+                    html = html.replace(/'/g, '"');
+                    headerPagina.innerHTML = html;
+                }
+                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
+                xhttp.open("POST", "verifica_login.php", true);
+                xhttp.send();
+            }
+
+        </script>
+
         <button id="btnIndietro" onclick="btnIndietro()">Indietro</button>
-        <button id="btnLogin" onclick="btnLogin()">Login</button>
         <h1 id="titoloPagina">Date </h1>
         <div id="caricamento"></div>
         <div id='listaBand'>

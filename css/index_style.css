@@ -70,11 +70,20 @@ body
     width: 7vw;
     height: 3vw;
     transition: background-color 0.3s;
-    position: fixed;
+    position: absolute;
     right: 0;
     margin-right: 2vw;
 }
 
 #btnLogin:hover {
     background-color: #0056b3;
+}
+
+#username
+{
+    position: absolute;
+    right: 0;
+    margin-right: 2vw;
+    color: #808080;
+    font-size: 2vw;
 }
