@@ -111,3 +111,26 @@ body
 #btnIndietro:hover {
     background-color: #0056b3;
 }
+
+#btnLogin
+{
+    color: white;
+    font-size: 130%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 7vw;
+    height: 3vw;
+    transition: background-color 0.3s;
+    position: absolute;
+    margin-top: 2vw;
+    right: 0;
+    margin-right: 2vw;
+}
+
+#btnLogin:hover {
+    background-color: #0056b3;
+}

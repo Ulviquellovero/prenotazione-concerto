@@ -5,6 +5,7 @@
 
     <body>
         <button id="btnIndietro" onclick="btnIndietro()">Indietro</button>
+        <button id="btnLogin" onclick="btnLogin()">Login</button>
         <h1 id="titoloPagina">Date </h1>
         <div id="caricamento"></div>
         <div id='listaBand'>
@@ -56,6 +57,11 @@
             function btnIndietro()
             {
                 window.history.back();
+            }
+
+            function btnLogin()
+            {
+                window.location = "login.html";
             }
         </script>
     </body>

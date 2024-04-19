@@ -4,6 +4,7 @@
     </head>
 
     <body>
+        <button id="btnLogin" onclick="btnLogin()">Login</button>
         <h1 id="titoloPagina">Lista Band</h1>
         <div id="caricamento"></div>
         <div id='listaBand'>
@@ -46,6 +47,10 @@
                 window.location = "band_scelta.php?idBand="+id;
             }
 
+            function btnLogin()
+            {
+                window.location = "login.html";
+            }
         </script>
     </body>
 </html>

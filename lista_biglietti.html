@@ -5,6 +5,7 @@
 
     <body>
         <button id="btnIndietro" onclick="btnIndietro()">Indietro</button>
+        <button id="btnLogin" onclick="btnLogin()">Login</button>
         <div id="caricamento"></div>
         <div id='listaPrenotazioni'>
             
@@ -75,6 +76,11 @@
             function btnIndietro()
             {
                 window.history.back();
+            }
+
+            function btnLogin()
+            {
+                window.location = "login.html";
             }
         </script>
     </body>
