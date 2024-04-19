@@ -65,7 +65,10 @@
                         btnCliccato.classList.add("btnPrenotato");
                         btnCliccato.textContent = "Prenotato";
                     } else {
-                        alert("Non puoi prenotare piu' di un biglietto! I posti sono limitati!");
+                        if(j.autenticato)
+                            alert("Non puoi prenotare piu' di un biglietto per data! I posti sono limitati!");
+                        else
+                            alert("Non puoi prenotare un biglietto senza prima accedere!");
                     }
                 }
                 //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/prenota.php?idPosto="+idPosto, true);
