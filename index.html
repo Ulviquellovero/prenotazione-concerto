@@ -24,8 +24,7 @@
                     html = html.replace(/'/g, '"');
                     headerPagina.innerHTML = html;
                 }
-                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
-                xhttp.open("POST", "verifica_login.php", true);
+                xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/verifica_login.php", true);
                 xhttp.send();
             }
 
@@ -62,8 +61,7 @@
                         divLista.innerHTML = html;
                     indicatoreCaricamento.style.display = "none";
                 }
-                //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
-                xhttp.open("POST", "vis_band.php", true);
+                xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/vis_band.php", true);
                 xhttp.send();
             }
 

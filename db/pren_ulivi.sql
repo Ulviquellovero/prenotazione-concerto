@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Apr 17, 2024 alle 09:54
--- Versione del server: 10.11.4-MariaDB-1~deb12u1
--- Versione PHP: 8.2.7
+-- Host: 127.0.0.1
+-- Creato il: Apr 19, 2024 alle 17:43
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `tBand`
+-- Struttura della tabella `tband`
 --
 
-CREATE TABLE `tBand` (
+CREATE TABLE `tband` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `tBand`
+-- Dump dei dati per la tabella `tband`
 --
 
-INSERT INTO `tBand` (`id`, `nome`) VALUES
+INSERT INTO `tband` (`id`, `nome`) VALUES
 (1, 'AC/DC'),
 (2, 'Metallica'),
 (3, 'The Beatles');
@@ -44,14 +44,26 @@ INSERT INTO `tBand` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `tData`
+-- Struttura della tabella `tdata`
 --
 
-CREATE TABLE `tData` (
+CREATE TABLE `tdata` (
   `id` int(11) NOT NULL,
   `data` date NOT NULL,
+  `luogo` varchar(30) NOT NULL,
   `band` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `tdata`
+--
+
+INSERT INTO `tdata` (`id`, `data`, `luogo`, `band`) VALUES
+(1, '2024-05-17', 'San Siro', 2),
+(3, '2024-05-31', 'Firenze', 2),
+(5, '2024-06-20', 'Torino', 1),
+(6, '2024-07-16', 'Circo Massimo', 3),
+(7, '2024-07-25', 'Arena di Verona', 3);
 
 -- --------------------------------------------------------
 
@@ -62,24 +74,46 @@ CREATE TABLE `tData` (
 CREATE TABLE `tprenotazione` (
   `id` int(11) NOT NULL,
   `prenotato` tinyint(1) NOT NULL,
-  `idSessioneUtente` varchar(255) DEFAULT NULL
+  `nPosto` int(11) NOT NULL,
+  `data` int(11) NOT NULL,
+  `idUtente` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `tprenotazione`
 --
 
-INSERT INTO `tprenotazione` (`id`, `prenotato`, `idSessioneUtente`) VALUES
-(1, 1, '9b209d2b2fa91784c2e64a7481ce9406'),
-(2, 1, 'b1d3bf5439bcf705e12e5497d880a4fc'),
-(3, 1, '24381ff508c823a5fa5774ea67e145fa'),
-(4, 1, 'cb45c22dc8544ebe1298e96c3eb1c9a8'),
-(5, 1, '86edd93de17544fb6fd3d66aefa9e939'),
-(6, 1, 'fe055c06027164b509dc3a5d2c680c13'),
-(7, 1, '449fabd311f3f6c02fc18d6e3cca405e'),
-(8, 1, '4c2319a321ba2712b3589ddb1cde5d06'),
-(9, 1, '447bc4825591f897a5744ce60dedda65'),
-(10, 1, '00af50b61706a147eea4d7c5d8176ded');
+INSERT INTO `tprenotazione` (`id`, `prenotato`, `nPosto`, `data`, `idUtente`) VALUES
+(11, 0, 1, 1, NULL),
+(12, 0, 2, 1, NULL),
+(13, 0, 3, 1, NULL),
+(14, 0, 4, 1, NULL),
+(15, 0, 5, 1, NULL),
+(16, 0, 6, 1, NULL),
+(17, 0, 7, 1, NULL),
+(18, 0, 8, 1, NULL),
+(19, 0, 9, 1, NULL),
+(20, 0, 10, 1, NULL),
+(21, 0, 1, 7, NULL),
+(22, 0, 2, 7, NULL),
+(23, 0, 3, 7, NULL),
+(24, 0, 4, 7, NULL),
+(25, 0, 5, 7, NULL),
+(26, 0, 1, 6, NULL),
+(27, 0, 2, 6, NULL),
+(28, 0, 3, 6, NULL),
+(29, 0, 4, 6, NULL),
+(30, 0, 5, 6, NULL),
+(31, 0, 1, 3, NULL),
+(32, 0, 2, 3, NULL),
+(33, 0, 3, 3, NULL),
+(34, 0, 4, 3, NULL),
+(35, 0, 5, 3, NULL),
+(36, 0, 1, 5, NULL),
+(37, 0, 2, 5, NULL),
+(38, 0, 3, 5, NULL),
+(39, 0, 4, 5, NULL),
+(40, 0, 5, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,15 +148,15 @@ INSERT INTO `tutente` (`idUtente`, `userName`, `passWord`) VALUES
 --
 
 --
--- Indici per le tabelle `tBand`
+-- Indici per le tabelle `tband`
 --
-ALTER TABLE `tBand`
+ALTER TABLE `tband`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `tData`
+-- Indici per le tabelle `tdata`
 --
-ALTER TABLE `tData`
+ALTER TABLE `tdata`
   ADD PRIMARY KEY (`id`),
   ADD KEY `band` (`band`);
 
@@ -130,7 +164,8 @@ ALTER TABLE `tData`
 -- Indici per le tabelle `tprenotazione`
 --
 ALTER TABLE `tprenotazione`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `data` (`data`);
 
 --
 -- Indici per le tabelle `tutente`
@@ -144,22 +179,22 @@ ALTER TABLE `tutente`
 --
 
 --
--- AUTO_INCREMENT per la tabella `tBand`
+-- AUTO_INCREMENT per la tabella `tband`
 --
-ALTER TABLE `tBand`
+ALTER TABLE `tband`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT per la tabella `tData`
+-- AUTO_INCREMENT per la tabella `tdata`
 --
-ALTER TABLE `tData`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tdata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `tprenotazione`
 --
 ALTER TABLE `tprenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT per la tabella `tutente`
@@ -172,10 +207,16 @@ ALTER TABLE `tutente`
 --
 
 --
--- Limiti per la tabella `tData`
+-- Limiti per la tabella `tdata`
 --
-ALTER TABLE `tData`
-  ADD CONSTRAINT `tData_ibfk_1` FOREIGN KEY (`band`) REFERENCES `tBand` (`id`);
+ALTER TABLE `tdata`
+  ADD CONSTRAINT `tData_ibfk_1` FOREIGN KEY (`band`) REFERENCES `tband` (`id`);
+
+--
+-- Limiti per la tabella `tprenotazione`
+--
+ALTER TABLE `tprenotazione`
+  ADD CONSTRAINT `tprenotazione_ibfk_1` FOREIGN KEY (`data`) REFERENCES `tdata` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
