@@ -10,6 +10,7 @@
     </head>
 
     <body>
+        <button id="btnIndietro" onclick="btnIndietro()">Indietro</button>
         <div id="caricamento"></div>
         <div id='listaPrenotazioni'>
             
@@ -75,6 +76,11 @@
                 //xhttp.open("POST", "http://192.168.8.103/quintaf/ulivi/prenotazione-concerto/prenota.php?idPosto="+idPosto, true);
                 xhttp.open("POST", "prenota.php?idPosto="+idPosto, true);
                 xhttp.send();
+            }
+
+            function btnIndietro()
+            {
+                window.history.back();
             }
         </script>
     </body>

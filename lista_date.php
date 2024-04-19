@@ -10,6 +10,7 @@
     </head>
 
     <body>
+        <button id="btnIndietro" onclick="btnIndietro()">Indietro</button>
         <h1 id="titoloPagina">Date </h1>
         <div id="caricamento"></div>
         <div id='listaBand'>
@@ -58,6 +59,10 @@
                 window.location = "lista_biglietti.php?idData="+id;
             }
 
+            function btnIndietro()
+            {
+                window.history.back();
+            }
         </script>
     </body>
 </html>
