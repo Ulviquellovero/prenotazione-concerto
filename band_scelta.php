@@ -4,5 +4,5 @@
 	header("Access-Control-Allow-Headers: *");
     if(isset($_GET["idBand"]))
         $_SESSION["idBand"] = $_GET["idBand"];
-    header("Location: lista_date.html");
+    header("Location: http://192.168.107.96/prenotazione-concerto/lista_date.html");
 ?>

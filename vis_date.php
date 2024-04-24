@@ -3,7 +3,7 @@
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Headers: *");  
     $idBand = $_SESSION["idBand"];
-    $sql = "SELECT td.id, td.data, td.luogo, tb.nome FROM tData td JOIN tband tb ON td.band = tb.id WHERE band = $idBand";
+    $sql = "SELECT td.id, td.data, td.luogo, tb.nome FROM tdata td JOIN tband tb ON td.band = tb.id WHERE band = $idBand";
     $res = mysqli_query($con,$sql);
     $i = 0;
     while($array = mysqli_fetch_array($res)) {
